@@ -21,12 +21,11 @@ module SimpleCart
       end
       redirect_to simple_cart_cart_path
     end
+    
+    private
+  
+    def find_cart_item
+      @cart_item = current_cart.cart_items.find(params[:id])
+    end
   end
-
-  private
-
-  def find_cart_item
-    @cart_item = current_cart.cart_items.find(params[:id])
-  end
-
 end
