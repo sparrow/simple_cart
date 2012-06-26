@@ -1,5 +1,4 @@
 module SimpleCart
-
   class CartItemsController < ApplicationController
 
     before_filter :find_cart_item, :only => [:update, :destroy]
@@ -21,12 +20,11 @@ module SimpleCart
       end
       redirect_to simple_cart_cart_path
     end
+
+    protected
+
+    def find_cart_item
+      @cart_item = current_cart.cart_items.find(params[:id])
+    end
   end
-
-  protected
-
-  def find_cart_item
-    @cart_item = current_cart.cart_items.find(params[:id])
-  end
-
 end
