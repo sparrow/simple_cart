@@ -8,11 +8,14 @@ module SimpleCart
     end
 
     def update
-      if @cart.update_attributes(params[:simple_cart_cart])
-        flash[:notice] = "Cart updated"
-        redirect_to simple_cart_cart_path
-      else
-        render :show
+      respond_to do |format|
+        if @cart.update_attributes(params[:simple_cart_cart])
+          format.html{ redirect_to simple_cart_cart_path }
+          format.json{ head :no_content }
+        else
+          format.html{ render :show }
+          format.json{ render json: @cart.errors, status: :unprocessable_entity }
+        end
       end
     end
 
