@@ -20,8 +20,23 @@ module SimpleCart
   mattr_accessor :on_expire_method
   @@on_expire_method = nil
 
-  def self.setup
-    yield self
+  class << self
+    def setup
+      yield self
+    end
+
+    def routes(rails_router, params = {})
+      params[:cart] ||= {}
+      params[:cart].merge!(only: [:show, :update])
+      params[:cart_items] ||= {}
+      params[:cart_items].merge!(only: [:create, :destroy])
+      rails_router.instance_exec(params) do |p|
+        namespace :simple_cart do
+          resource :cart, p[:cart]
+          resources :cart_items, p[:cart_items]
+        end
+      end
+    end
   end
 
 end
