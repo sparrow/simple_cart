@@ -11,7 +11,3 @@ Run into console
 
 Run into console
   rails g simple_cart:views
-  
-***
-<a href="https://rubygarage.org/"><img src="https://github.com/sparrow/simple_cart/blob/master/app/assets_rg_color_logo_horizontal.png></a>
-RubyGarage is a leading software development and consulting company in Eastern Europe. Our main expertise includes Ruby and Ruby on Rails, but we successfuly employ other technologies to deliver the best results to our clients. [Check out our portoflio](https://rubygarage.org/portfolio) for even more exciting works!
